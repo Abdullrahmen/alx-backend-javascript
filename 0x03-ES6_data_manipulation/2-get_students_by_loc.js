@@ -6,11 +6,9 @@
  *   location: String
  * }[]} students - The list of students.
  * @param {String} city - The location.
- * @author Bezaleel Olakunori <https://github.com/B3zaleel>
- * @returns
  */
 export default function getStudentsByLocation(students, city) {
-  if (students instanceof Array) {
+  if (typeof students.filter === 'function'){
     return students.filter((student) => student.location === city);
   }
   return [];
