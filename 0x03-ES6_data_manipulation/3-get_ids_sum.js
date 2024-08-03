@@ -9,7 +9,7 @@
  */
 export default function getStudentIdsSum(students) {
   if (typeof students.reduce === 'function') {
-    studentsIDs = students.map((student) => student.id);
+    let studentsIDs = students.map((student) => student.id);
     return studentsIDs.reduce((total, student) => total + student);
   }
   return 0;
