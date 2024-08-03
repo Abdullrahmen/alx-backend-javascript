@@ -3,14 +3,16 @@
  * @param {Number} length - The length of the buffer.
  * @param {Number} position - The position to modify.
  * @param {Number} value - The value to be stored in the position.
- * @author Bezaleel Olakunori <https://github.com/B3zaleel>
  * @returns {DataView}
  */
 export default function createInt8TypedArray(length, position, value) {
-  if (position >= length) {
-    throw new Error('Position outside range');
+  const buffer = new ArrayBuffer(length);
+  const res = new DataView(buffer)
+  try{
+      res.setUint8(position, value);
+  }catch (error){
+      if (error instanceof RangeError)
+        throw new Error("Position outside range");
   }
-  const buf = new DataView(new ArrayBuffer(length), 0, length);
-  buf.setInt8(position, value);
-  return buf;
+  return res;
 }
