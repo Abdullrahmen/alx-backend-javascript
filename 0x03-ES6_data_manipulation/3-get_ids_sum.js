@@ -5,15 +5,12 @@
  *   firstName: String,
  *   location: String
  * }[]} students - The list of students.
- * @author Bezaleel Olakunori <https://github.com/B3zaleel>
  * @returns {Number}
  */
 export default function getStudentIdsSum(students) {
-  if (students instanceof Array) {
-    return students.reduce(
-      (prevStudent, curStudent) => prevStudent.id || prevStudent + curStudent.id,
-      0,
-    );
+  if (typeof students.reduce === 'function') {
+    studentsIDs = students.map((student) => student.id);
+    return studentsIDs.reduce((total, student) => total + student);
   }
   return 0;
 }
